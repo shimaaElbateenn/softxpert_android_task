@@ -8,8 +8,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.softxpert_android_task.models.Car;
 import com.example.softxpert_android_task.network.API;
+import com.example.softxpert_android_task.network.JSONResponse;
 import com.example.softxpert_android_task.network.RetrofitClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,21 +32,25 @@ public class CarListViewModel extends ViewModel {
 
     }
 
-    public void makeApiCall() {
-        API apiService = RetrofitClient.getRetroClient().create(API.class);
-        retrofit2.Call<List<Car>> call = apiService.getCarInfo();
-        call.enqueue(new Callback<List<Car>>() {
-            @Override
-            public void onResponse(Call<List<Car>> call, Response<List<Car>> response) {
-                carsList.postValue(response.body());
-                Log.e("Hi, ", "Successful");
-            }
-
-            @Override
-            public void onFailure(Call<List<Car>> call, Throwable t) {
-                Log.e("Hi, ", "UnSuccessful");
-                carsList.postValue(null);
-            }
-        });
-    }
+//    public void makeApiCall() {
+//        API apiService = RetrofitClient.getRetroClient().create(API.class);
+//        Call<JSONResponse> call = apiService.getCarInfo();
+//        call.enqueue(new Callback<JSONResponse>() {
+//            @Override
+//            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
+//
+//                JSONResponse jsonResponse = response.body();
+//                carsList = new MutableLiveData<>(Arrays.asList(jsonResponse.getData()));
+//
+//                carsList.postValue(jsonResponse);
+//                Log.e("Message: , ", "Successful");
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JSONResponse> call, Throwable throwable) {
+//                Log.e("Error, ", throwable.toString());
+//                carsList.postValue(null);
+//            }
+//        });
+//    }
 }

@@ -52,24 +52,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull CarAdapter.CarViewHolder holder, int position) {
         Car model = carList.get(position);
-        holder.brandName.setText(model.getName());
-        holder.status.setText(model.getStatus());
-        holder.year.setText(model.getConstruction());
-
-//        String id = model.getOrderId();
-//        String url = "https://waset-order-service.herokuapp.com/order/" + id + "/photo";
-//
-//        holder.orderImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//
-//        Picasso.get()
-//                .load(url)
-//                .resize(240, 120)
-//                .centerInside()
-//                .into(holder.orderImage);
+        holder.brandName.setText(model.getBrand());
+        holder.status.setText(model.getUsed().toString());
+        holder.year.setText(model.getConstractionYear());
 
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -97,7 +84,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
             brandName = view.findViewById(R.id.txt_brand);
             status = view.findViewById(R.id.txt_status);
             year = view.findViewById(R.id.txt_year);
-        //    repoImg = view.findViewById(R.id.repoImg);
 
         }
 
